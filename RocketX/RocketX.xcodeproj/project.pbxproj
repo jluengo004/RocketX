@@ -24,6 +24,10 @@
 		6566AC2725DAE80E00F8F531 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566AC2625DAE80E00F8F531 /* Services.swift */; };
 		6566AC3525DAF4EB00F8F531 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6566AC3325DAF4EB00F8F531 /* SplashViewController.xib */; };
 		6566AC3625DAF4EB00F8F531 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6566AC3425DAF4EB00F8F531 /* SplashViewController.swift */; };
+		656D297F25DD854000477DA2 /* GalleryCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656D297D25DD854000477DA2 /* GalleryCollectionViewController.xib */; };
+		656D298025DD854000477DA2 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D297E25DD854000477DA2 /* GalleryCollectionViewController.swift */; };
+		659688AF25DD8D6C00B5E7DD /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659688AD25DD8D6C00B5E7DD /* GalleryCollectionViewCell.xib */; };
+		659688B025DD8D6C00B5E7DD /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659688AE25DD8D6C00B5E7DD /* GalleryCollectionViewCell.swift */; };
 		7A05F445B2FF747B8B76B38E /* Pods_RocketXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BA6A5446CB57379C01CD10 /* Pods_RocketXTests.framework */; };
 		FE79D826BBDDE3DE891C82DA /* Pods_RocketX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B884D8C4F39A9C5663150D /* Pods_RocketX.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +74,10 @@
 		6566AC2625DAE80E00F8F531 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		6566AC3325DAF4EB00F8F531 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		6566AC3425DAF4EB00F8F531 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		656D297D25DD854000477DA2 /* GalleryCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionViewController.xib; sourceTree = "<group>"; };
+		656D297E25DD854000477DA2 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
+		659688AD25DD8D6C00B5E7DD /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
+		659688AE25DD8D6C00B5E7DD /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		87DA92DCFFB3ADD26C27CB24 /* Pods-RocketX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketX.release.xcconfig"; path = "Target Support Files/Pods-RocketX/Pods-RocketX.release.xcconfig"; sourceTree = "<group>"; };
 		92BA6A5446CB57379C01CD10 /* Pods_RocketXTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketXTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B04D16167E4ADB5E6CB9864 /* Pods-RocketXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketXTests.debug.xcconfig"; path = "Target Support Files/Pods-RocketXTests/Pods-RocketXTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +203,8 @@
 		6566AC1A25DAE2EE00F8F531 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				659688AD25DD8D6C00B5E7DD /* GalleryCollectionViewCell.xib */,
+				656D297D25DD854000477DA2 /* GalleryCollectionViewController.xib */,
 				6526319A25DC4E7A0045A587 /* WebViewController.xib */,
 				6523772E25DB076F00EF933C /* RocketsCollectionViewController.xib */,
 				6523771925DB04C700EF933C /* RocketCollectionViewCell.xib */,
@@ -210,6 +220,8 @@
 				6523771A25DB04C700EF933C /* RocketCollectionViewCell.swift */,
 				6523772F25DB076F00EF933C /* RocketsCollectionViewController.swift */,
 				6526319B25DC4E7A0045A587 /* WebViewController.swift */,
+				656D297E25DD854000477DA2 /* GalleryCollectionViewController.swift */,
+				659688AE25DD8D6C00B5E7DD /* GalleryCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -350,10 +362,12 @@
 			files = (
 				6566ABE725DAE27300F8F531 /* Assets.xcassets in Resources */,
 				6526317E25DC3B700045A587 /* Localizable.strings in Resources */,
+				656D297F25DD854000477DA2 /* GalleryCollectionViewController.xib in Resources */,
 				6523773025DB076F00EF933C /* RocketsCollectionViewController.xib in Resources */,
 				6526319C25DC4E7A0045A587 /* WebViewController.xib in Resources */,
 				6523771B25DB04C700EF933C /* RocketCollectionViewCell.xib in Resources */,
 				6566AC3525DAF4EB00F8F531 /* SplashViewController.xib in Resources */,
+				659688AF25DD8D6C00B5E7DD /* GalleryCollectionViewCell.xib in Resources */,
 				6523770725DB010400EF933C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +502,8 @@
 				6566AC2725DAE80E00F8F531 /* Services.swift in Sources */,
 				6526319D25DC4E7A0045A587 /* WebViewController.swift in Sources */,
 				6566ABDE25DAE26D00F8F531 /* AppDelegate.swift in Sources */,
+				656D298025DD854000477DA2 /* GalleryCollectionViewController.swift in Sources */,
+				659688B025DD8D6C00B5E7DD /* GalleryCollectionViewCell.swift in Sources */,
 				6566AC3625DAF4EB00F8F531 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

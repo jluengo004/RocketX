@@ -8,17 +8,14 @@
 import UIKit
 import SDWebImage
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "RocketCell"
 
 class RocketsCollectionViewController: UICollectionViewController {
     
     public var rockets: Rockets? = nil;
-    private let reuseIdentifier = "RocketCell"
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     private let itemsPerRow: CGFloat = 1
     var pageController: UIPageControl!
-    var timer = Timer()
-    var counter = 0
     var loadingRocket: UIImage! = nil
     var loadingRocketString = "LoadingRocket"
     
@@ -90,6 +87,7 @@ class RocketsCollectionViewController: UICollectionViewController {
         
         cell.nameLabel.text = rocket.name
         cell.descriptionLabel.text = rocket.description
+        cell.galleryImgStrings = rocket.flickrImages ?? []
         
         if rocket.wikipedia != nil, let wikiURL = URL(string: rocket.wikipedia!) {
             cell.wikipediaURL = wikiURL
@@ -144,6 +142,16 @@ extension RocketsCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension RocketsCollectionViewController: RocketCellDelegate {
+    func openGallery(galleryImgUrls: [URL]) {
+        DispatchQueue.main.async {
+            let galleryVC = GalleryCollectionViewController(nibName: "GalleryCollectionViewController", bundle: nil)
+            galleryVC.galleryImgUrl = galleryImgUrls
+            
+            self.navigationController?.pushViewController(galleryVC, animated: true)
+            
+        }
+    }
+    
     func reloadRockets() {
         Services().getAllRockets(timeOut: 60.0) { (rockets, error) in
             DispatchQueue.main.async {

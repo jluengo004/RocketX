@@ -10,6 +10,7 @@ import UIKit
 protocol RocketCellDelegate {
     func openWikiWebView(url: URL)
     func reloadRockets()
+    func openGallery(galleryImgUrls: [URL])
 }
 
 class RocketCollectionViewCell: UICollectionViewCell {
@@ -31,7 +32,7 @@ class RocketCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var delegate: RocketCellDelegate?
-    
+    var galleryImgStrings: [String] = []
     var wikipediaURL: URL!
     
     
@@ -39,8 +40,23 @@ class RocketCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         spinner.hidesWhenStopped = true
         spinner.color = UIColor.red
+        
         wikipediaButton.setTitle(NSLocalizedString("wikipedia_button", comment: ""), for: .normal)
+        
         reloadButton.isHidden = true
+        
+        image.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        tapRecognizer.numberOfTapsRequired = 2
+        image.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func imageTapped() {
+        var galleryImgUrls: [URL] = []
+        for imageString in galleryImgStrings {
+            galleryImgUrls.append(URL(string: imageString)!)
+        }
+        delegate?.openGallery(galleryImgUrls: galleryImgUrls)
     }
     
     @IBAction func reload(_ sender: UIButton) {
