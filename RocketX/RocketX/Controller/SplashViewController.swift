@@ -18,7 +18,7 @@ class SplashViewController: UIViewController {
     
     //Loads Rockets while showing Splash Screen
     func loadRocketsData() {
-        Services().getAllRockets { (rockets, error) in
+        Services().getAllRockets(timeOut: 5.0) { (rockets, error) in
             self.loadRocketsScreen(with: rockets)
         }
     }

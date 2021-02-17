@@ -15,7 +15,7 @@ class Rocket: Codable {
     let engines: Engines?
     let landingLegs: LandingLegs?
     let payloadWeights: [PayloadWeight]?
-    let flickrImages: [String]?
+    var flickrImages: [String]?
     let name, type: String?
     let active: Bool?
     let stages, boosters, costPerLaunch, successRatePct: Int?
@@ -38,6 +38,31 @@ class Rocket: Codable {
         case country, company, wikipedia
         case description = "description"
         case id
+    }
+    
+    init() {
+        self.height = nil
+        self.diameter = nil
+        self.mass = nil
+        self.firstStage = nil
+        self.secondStage = nil
+        self.engines = nil
+        self.landingLegs = nil
+        self.payloadWeights = nil
+        self.flickrImages = nil
+        self.name = nil
+        self.type = nil
+        self.active = nil
+        self.stages = nil
+        self.boosters = nil
+        self.costPerLaunch = nil
+        self.successRatePct = nil
+        self.firstFlight = nil
+        self.country = nil
+        self.company = nil
+        self.wikipedia = nil
+        self.description = nil
+        self.id = nil
     }
 
     init(height: Diameter?, diameter: Diameter?, mass: Mass?, firstStage: FirstStage?, secondStage: SecondStage?, engines: Engines?, landingLegs: LandingLegs?, payloadWeights: [PayloadWeight]?, flickrImages: [String]?, name: String?, type: String?, active: Bool?, stages: Int?, boosters: Int?, costPerLaunch: Int?, successRatePct: Int?, firstFlight: String?, country: String?, company: String?, wikipedia: String?, description: String?, id: String?) {

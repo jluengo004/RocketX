@@ -20,13 +20,17 @@ class RocketsCollectionViewController: UICollectionViewController {
     var timer = Timer()
     var counter = 0
     var loadingRocket: UIImage! = nil
+    var loadingRocketString = "LoadingRocket"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingRocket = UIImage(named: loadingRocketString)
+        checkIfRocketsEmpty()
+        
         self.edgesForExtendedLayout = []
         
         self.title = "SpaceX Rockets"
-        loadingRocket = UIImage(named: "LoadingRocket")
+        
         
         self.clearsSelectionOnViewWillAppear = false
         self.collectionView.register(UINib(nibName: "RocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -34,9 +38,21 @@ class RocketsCollectionViewController: UICollectionViewController {
         createPageControl()
     }
     
+    private func checkIfRocketsEmpty() {
+        if (rockets == nil) {
+            let emptyRocket = Rocket()
+            emptyRocket.flickrImages = [loadingRocketString]
+            rockets = [emptyRocket]
+            let alert = UIAlertController(title: NSLocalizedString("conection_error", comment: ""), message:  NSLocalizedString("rocket_empty_message", comment: "") , preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+        }
+    }
+    
     private func createPageControl() {
         pageController = UIPageControl(frame: CGRect(x: 50, y: self.view.bounds.maxY * 0.39, width: self.view.frame.width - 100, height: 50))
-        pageController.numberOfPages = rockets?.count ?? 0
         pageController.currentPage = 0
         self.view.addSubview(pageController)
     }
@@ -48,7 +64,9 @@ class RocketsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rockets?.count ?? 0
+        let rocketCount = rockets?.count ?? 0
+        pageController.numberOfPages = rocketCount
+        return rocketCount
     }
 
     
@@ -57,16 +75,25 @@ class RocketsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RocketCollectionViewCell
         
         cell.delegate = self
-        
         let rocket = rockets![indexPath.row]
+        
+        if (rocket.flickrImages?[0] == loadingRocketString) {
+            cell.hideForEmptyRocket(hide: true)
+            cell.reloadButton.setTitle(NSLocalizedString("reload", comment: ""), for: .normal)
+            cell.image.image = UIImage(named: loadingRocketString)
+            return cell
+        }
+        
+        if (cell.nameLabel.isHidden) {
+            cell.hideForEmptyRocket(hide: false)
+        }
+        
         cell.nameLabel.text = rocket.name
         cell.descriptionLabel.text = rocket.description
         
         if rocket.wikipedia != nil, let wikiURL = URL(string: rocket.wikipedia!) {
             cell.wikipediaURL = wikiURL
         }
-        
-        
         cell.heightLabel.text = String(format: NSLocalizedString("height.by_meters", comment: ""), rocket.height?.meters as! CVarArg)
         cell.diameterLabel.text = String(format: NSLocalizedString("diameter.by_meters", comment: ""), rocket.diameter?.meters as! CVarArg)
         cell.massLabel.text = String(format: NSLocalizedString("mass.by_meters", comment: ""), rocket.mass?.kg as! CVarArg)
@@ -117,12 +144,23 @@ extension RocketsCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension RocketsCollectionViewController: RocketCellDelegate {
+    func reloadRockets() {
+        Services().getAllRockets(timeOut: 60.0) { (rockets, error) in
+            DispatchQueue.main.async {
+                self.rockets = rockets
+                self.checkIfRocketsEmpty()
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     func openWikiWebView(url: URL) {
         DispatchQueue.main.async {
             let webVC = WebViewController(nibName: "WebViewController", bundle: nil)
             webVC.wikipediaURL = url
             
             self.navigationController?.pushViewController(webVC, animated: true)
+            
         }
     }
     

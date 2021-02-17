@@ -9,6 +9,7 @@ import UIKit
 
 protocol RocketCellDelegate {
     func openWikiWebView(url: URL)
+    func reloadRockets()
 }
 
 class RocketCollectionViewCell: UICollectionViewCell {
@@ -26,6 +27,8 @@ class RocketCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var firstFlightLabel: UILabel!
     
     @IBOutlet weak var wikipediaButton: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var delegate: RocketCellDelegate?
     
@@ -34,10 +37,31 @@ class RocketCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        spinner.hidesWhenStopped = true
+        spinner.color = UIColor.red
         wikipediaButton.setTitle(NSLocalizedString("wikipedia_button", comment: ""), for: .normal)
+        reloadButton.isHidden = true
     }
-
+    
+    @IBAction func reload(_ sender: UIButton) {
+        spinner.startAnimating()
+        delegate?.reloadRockets()
+    }
+    
     @IBAction func navigateToWikipedia(_ sender: UIButton) {
         delegate?.openWikiWebView(url: wikipediaURL)
+    }
+    
+    public func hideForEmptyRocket(hide: Bool) {
+        nameLabel.isHidden = hide
+        descriptionLabel.isHidden = hide
+        heightLabel.isHidden = hide
+        diameterLabel.isHidden = hide
+        massLabel.isHidden = hide
+        activeLabel.isHidden = hide
+        launchCostLabel.isHidden = hide
+        firstFlightLabel.isHidden = hide
+        wikipediaButton.isHidden = hide
+        reloadButton.isHidden = !hide
     }
 }

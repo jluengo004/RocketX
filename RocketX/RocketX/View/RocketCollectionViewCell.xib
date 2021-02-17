@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="454" height="615"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBr-1O-0Tz">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBr-1O-0Tz">
                         <rect key="frame" x="0.0" y="0.0" width="454" height="307.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLe-mm-zCj">
@@ -69,6 +69,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="25" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpJ-J7-JI4">
+                        <rect key="frame" x="212" y="541" width="30" height="30"/>
+                        <connections>
+                            <action selector="reload:" destination="gTV-IL-0wX" eventType="touchUpInside" id="FzJ-FL-APz"/>
+                        </connections>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="25" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6H-nO-YCI">
                         <rect key="frame" x="212" y="541" width="30" height="30"/>
                         <connections>
@@ -81,6 +87,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Vms-wg-Ikh">
+                        <rect key="frame" x="217" y="302.5" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -91,18 +100,22 @@
                 <constraint firstItem="1go-zd-pEm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="CnJ-Tu-o9W"/>
                 <constraint firstItem="5HE-AI-WQU" firstAttribute="top" secondItem="wde-5c-ezj" secondAttribute="bottom" constant="10" id="DrT-BD-cIx"/>
                 <constraint firstItem="wde-5c-ezj" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Enx-oB-hWV"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="HpJ-J7-JI4" secondAttribute="bottom" constant="10" id="I7B-3Y-d1G"/>
                 <constraint firstItem="KPH-Mt-lUw" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="LQJ-Dm-Y74"/>
                 <constraint firstItem="5HE-AI-WQU" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="MuX-Yx-jx6"/>
                 <constraint firstItem="iCH-fU-eTA" firstAttribute="top" secondItem="1go-zd-pEm" secondAttribute="bottom" constant="10" id="O49-Y6-4mC"/>
                 <constraint firstAttribute="trailing" secondItem="AQB-W4-mcg" secondAttribute="trailing" constant="20" id="Pkk-fe-ya7"/>
+                <constraint firstItem="Vms-wg-Ikh" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="YGe-Yo-QGt"/>
                 <constraint firstItem="1go-zd-pEm" firstAttribute="top" secondItem="vLe-mm-zCj" secondAttribute="bottom" constant="10" id="YMa-vn-tb3"/>
                 <constraint firstItem="vLe-mm-zCj" firstAttribute="top" secondItem="naG-yD-NI3" secondAttribute="bottom" constant="10" id="aff-7u-mfY"/>
                 <constraint firstItem="iCH-fU-eTA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="c1e-F8-0Ay"/>
+                <constraint firstItem="Vms-wg-Ikh" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="d5Y-v7-Qgg"/>
                 <constraint firstItem="naG-yD-NI3" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="dkv-e1-BaG"/>
                 <constraint firstItem="MBr-1O-0Tz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.5" id="eED-ZJ-7xu"/>
                 <constraint firstItem="A9n-Rb-AOK" firstAttribute="top" secondItem="AQB-W4-mcg" secondAttribute="bottom" constant="10" id="hRm-Ut-jrI"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="KPH-Mt-lUw" secondAttribute="bottom" id="jCC-uV-Xzy"/>
                 <constraint firstAttribute="trailing" secondItem="MBr-1O-0Tz" secondAttribute="trailing" id="jrN-Eu-LO9"/>
+                <constraint firstItem="HpJ-J7-JI4" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="m2a-cD-10Z"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="z6H-nO-YCI" secondAttribute="bottom" constant="10" id="pQH-6K-YWd"/>
                 <constraint firstItem="z6H-nO-YCI" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="s9b-v2-b3H"/>
                 <constraint firstItem="KPH-Mt-lUw" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="sEZ-HS-lwj"/>
@@ -123,6 +136,8 @@
                 <outlet property="launchCostLabel" destination="wde-5c-ezj" id="d2h-pL-SP3"/>
                 <outlet property="massLabel" destination="iCH-fU-eTA" id="10l-6e-bNv"/>
                 <outlet property="nameLabel" destination="naG-yD-NI3" id="Jh0-SJ-kRX"/>
+                <outlet property="reloadButton" destination="HpJ-J7-JI4" id="9Hp-Ol-YBh"/>
+                <outlet property="spinner" destination="Vms-wg-Ikh" id="9nd-rZ-456"/>
                 <outlet property="wikipediaButton" destination="z6H-nO-YCI" id="nZk-Wt-Pdh"/>
             </connections>
             <point key="canvasLocation" x="-192.75362318840581" y="134.26339285714286"/>

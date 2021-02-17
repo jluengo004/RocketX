@@ -11,10 +11,9 @@ class Services {
     
     
     //TO-DO: change try! to try?
-    public func getAllRockets(completion: @escaping ([Rocket]?, Error?) -> Void) {
+    public func getAllRockets(timeOut: Double, completion: @escaping ([Rocket]?, Error?) -> Void) {
         guard let url = URL(string: "https://api.spacexdata.com/v4/rockets") else { return }
-        httpGet(url: url) { (rocketsData, error) in
-            
+        httpGet(url: url, timeOut: timeOut) { (rocketsData, error) in
             if let error = error {
                 completion(nil, error)
             }
@@ -27,9 +26,9 @@ class Services {
     }
     
     
-    public func getRocketByID(rocketID: String, completion: @escaping (Rocket?, Error?) -> Void) {
+    public func getRocketByID(rocketID: String, timeOut: Double, completion: @escaping (Rocket?, Error?) -> Void) {
         guard let url = URL(string: "https://api.spacexdata.com/v4/rockets/" + rocketID) else { return }
-        httpGet(url: url) { (rocketData, error) in
+        httpGet(url: url, timeOut: timeOut) { (rocketData, error) in
 
             print(error)
             
@@ -46,9 +45,10 @@ class Services {
     }
     
     
-    private func httpGet(url: URL, completion: @escaping (Data?, Error?) -> Void) {
+    private func httpGet(url: URL, timeOut: Double,  completion: @escaping (Data?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        request.timeoutInterval = timeOut
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error: ", error)
