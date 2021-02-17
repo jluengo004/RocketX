@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  RocketX
+
+  Created by Jon Luengo Muntion on 16/2/21.
+  
+*/
+
+"height.by_meters" = "Height: %.2f meters";
+"diameter.by_meters" = "Diameter: %.2f meters";
+"mass.by_meters" = "Mass: %d kg";
+"active.by_bool" = "Active: %@";
+"launch_cost.by_cost" = "Launch Cost: %d $";
+"first_flight.by_date" = "First Flight: %@";
+"wikipedia_button" = "Watch Rocket on Wikipedia";
+"conection_error" = "There was a conection error";
+"reload" = "Reload";
+"rocket_empty_message" = "Please try to reload to get Rocket Info";
