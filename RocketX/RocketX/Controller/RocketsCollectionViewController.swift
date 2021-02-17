@@ -28,7 +28,6 @@ class RocketsCollectionViewController: UICollectionViewController {
         
         self.title = "SpaceX Rockets"
         
-        
         self.clearsSelectionOnViewWillAppear = false
         self.collectionView.register(UINib(nibName: "RocketCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -45,6 +44,22 @@ class RocketsCollectionViewController: UICollectionViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 
             self.present(alert, animated: true)
+        } else {
+            prefetchImages()
+        }
+    }
+    
+    private func prefetchImages() {
+        var imageURL: [URL] = []
+        if let rockets = rockets {
+            for rocket in rockets {
+                if let images = rocket.flickrImages {
+                    for image in images {
+                        imageURL.append(URL(string: image)!)
+                    }
+                }
+            }
+            SDWebImagePrefetcher.shared.prefetchURLs(imageURL)
         }
     }
     
