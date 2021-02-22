@@ -20,7 +20,7 @@ class Rocket: Codable {
     let active: Bool?
     let stages, boosters, costPerLaunch, successRatePct: Int?
     let firstFlight, country, company: String?
-    let wikipedia: String?
+    var wikipedia: String?
     let description, id: String?
 
     enum CodingKeys: String, CodingKey {

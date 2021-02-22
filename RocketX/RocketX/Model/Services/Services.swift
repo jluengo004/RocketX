@@ -9,10 +9,12 @@ import Foundation
 
 class Services {
     
+    private var baseURL = "https://api.spacexdata.com/v4/"
+    private var rocketApi = "rockets/"
     
     //TO-DO: change try! to try?
     public func getAllRockets(timeOut: Double, completion: @escaping ([Rocket]?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.spacexdata.com/v4/rockets") else { return }
+        guard let url = URL(string: baseURL + rocketApi) else { return }
         httpGet(url: url, timeOut: timeOut) { (rocketsData, error) in
             if let error = error {
                 completion(nil, error)
@@ -25,9 +27,10 @@ class Services {
         }
     }
     
-    
+    /*
+    //Future implementations, favorite list f.ex.
     public func getRocketByID(rocketID: String, timeOut: Double, completion: @escaping (Rocket?, Error?) -> Void) {
-        guard let url = URL(string: "https://api.spacexdata.com/v4/rockets/" + rocketID) else { return }
+        guard let url = URL(string: baseURL + rocketApi + rocketID) else { return }
         httpGet(url: url, timeOut: timeOut) { (rocketData, error) in
 
             print(error)
@@ -42,7 +45,7 @@ class Services {
             }
             
         }
-    }
+    }*/
     
     
     private func httpGet(url: URL, timeOut: Double,  completion: @escaping (Data?, Error?) -> Void) {

@@ -34,7 +34,7 @@ class RocketsCollectionViewController: UICollectionViewController {
         createPageControl()
     }
     
-    private func checkIfRocketsEmpty() {
+     func checkIfRocketsEmpty() {
         if (rockets == nil) {
             let emptyRocket = Rocket()
             emptyRocket.flickrImages = [loadingRocketString]
@@ -63,7 +63,7 @@ class RocketsCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func createPageControl() {
+    func createPageControl() {
         pageController = UIPageControl(frame: CGRect(x: 50, y: self.view.bounds.maxY * 0.39, width: self.view.frame.width - 100, height: 50))
         pageController.currentPage = 0
         self.view.addSubview(pageController)

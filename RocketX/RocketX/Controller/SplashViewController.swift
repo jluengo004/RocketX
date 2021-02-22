@@ -23,7 +23,7 @@ class SplashViewController: UIViewController {
         }
     }
     
-    func loadRocketsScreen(with rockets: Rockets?) {
+    private func loadRocketsScreen(with rockets: Rockets?) {
         DispatchQueue.main.async {
             let rocketsVC = RocketsCollectionViewController(nibName: "RocketsCollectionViewController", bundle: nil)
             rocketsVC.rockets = rockets
@@ -33,13 +33,5 @@ class SplashViewController: UIViewController {
             self.present(nav, animated: false, completion: nil)
         }
     }
-
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
 
 }
